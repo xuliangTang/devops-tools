@@ -8,7 +8,7 @@ import (
 var rootCmd = &cobra.Command{}
 
 func RunCmd() {
-	rootCmd.AddCommand(versionCmd, cpuCmd)
+	rootCmd.AddCommand(versionCmd, cpuCmd, infoCmd)
 	if err := rootCmd.Execute(); err != nil {
 		log.Fatalln(err)
 	}
