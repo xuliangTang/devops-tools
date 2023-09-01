@@ -14,8 +14,10 @@ import (
 )
 
 func init() {
-	iptablesCmd.Flags().StringP("remote", "r", "", "set remote config name")
-	iptablesCmd.Flags().StringP("table", "t", "", "set table")
+	iptablesCmd.PersistentFlags().StringP("remote", "r", "", "set remote config name")
+	iptablesCmd.PersistentFlags().StringP("table", "t", "", "set table")
+	// 添加子命令
+	iptablesCmd.AddCommand(iptablesDropCmd)
 }
 
 var iptablesCmd = &cobra.Command{
