@@ -18,6 +18,7 @@ func init() {
 	iptablesCmd.PersistentFlags().StringP("table", "t", "", "set table")
 	// 添加子命令
 	iptablesCmd.AddCommand(iptablesDropCmd)
+	iptablesCmd.AddCommand(iptablesDeleteCmd)
 }
 
 var iptablesCmd = &cobra.Command{
