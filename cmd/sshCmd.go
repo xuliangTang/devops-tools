@@ -53,7 +53,7 @@ var sshCmd = &cobra.Command{
 					connCount := 0
 					for connCount < 3 {
 						fmt.Println("entry password")
-						getPwd, err := terminal.ReadPassword(syscall.Stdin)
+						getPwd, err := terminal.ReadPassword(int(syscall.Stdin))
 						if err != nil {
 							log.Fatalln(err)
 						}

@@ -8,6 +8,7 @@ import (
 	"github.com/spf13/cobra"
 	"os"
 	"os/signal"
+	"runtime"
 )
 
 func init() {
@@ -51,6 +52,10 @@ var pingCmd = &cobra.Command{
 				stats.PacketsSent, stats.PacketsRecv, stats.PacketLoss)
 			fmt.Printf("round-trip min/avg/max/stddev = %v/%v/%v/%v\n",
 				stats.MinRtt, stats.AvgRtt, stats.MaxRtt, stats.StdDevRtt)
+		}
+
+		if runtime.GOOS == "windows" {
+			pinger.SetPrivileged(true)
 		}
 
 		pinger.Count = 5 // 设置ping次数
